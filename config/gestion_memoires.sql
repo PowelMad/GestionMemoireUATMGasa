@@ -3,16 +3,13 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 24 mai 2026 à 18:45
+-- Généré le : lun. 01 juin 2026 à 09:36
 -- Version du serveur : 8.4.7
 -- Version de PHP : 8.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-CREATE DATABASE IF NOT EXISTS gestion_memoires
-CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE gestion_memoires;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -77,6 +74,26 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `demande_matricule`
+--
+
+DROP TABLE IF EXISTS `demande_matricule`;
+CREATE TABLE IF NOT EXISTS `demande_matricule` (
+  `id_demande` int NOT NULL AUTO_INCREMENT,
+  `matricule_actuel` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `matricule_demande` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `niveau` enum('L3','M2') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_filiere` int NOT NULL,
+  `id_centre` int NOT NULL,
+  `statut` enum('en_attente','acceptee','refusee') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT 'en_attente',
+  `date_demande` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_demande`),
+  KEY `matricule_actuel` (`matricule_actuel`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `etudiant`
 --
 
@@ -85,7 +102,9 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
   `matricule` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nom` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `prenoms` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type_etudiant` enum('L3','M1','M2') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type_etudiant` enum('Observateur','Diplomé') CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `niveau` enum('L3','M2') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date_diplomation` date DEFAULT NULL,
   `id_filiere` int NOT NULL,
   `id_centre` int NOT NULL,
   `id_utilisateur` int NOT NULL,
@@ -94,6 +113,13 @@ CREATE TABLE IF NOT EXISTS `etudiant` (
   KEY `id_filiere` (`id_filiere`),
   KEY `id_centre` (`id_centre`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `etudiant`
+--
+
+INSERT INTO `etudiant` (`matricule`, `nom`, `prenoms`, `type_etudiant`, `niveau`, `date_diplomation`, `id_filiere`, `id_centre`, `id_utilisateur`) VALUES
+('TMP-1-1779988245', 'ZOSSOUNGBO', 'Mario', 'Diplomé', NULL, NULL, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -195,9 +221,17 @@ CREATE TABLE IF NOT EXISTS `professeur` (
   `prenoms` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
   `titre` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `id_utilisateur` int NOT NULL,
+  `statut` enum('en_attente','valide') COLLATE utf8mb4_unicode_ci DEFAULT 'en_attente',
   PRIMARY KEY (`id_professeur`),
   UNIQUE KEY `id_utilisateur` (`id_utilisateur`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `professeur`
+--
+
+INSERT INTO `professeur` (`id_professeur`, `nom`, `prenoms`, `titre`, `id_utilisateur`, `statut`) VALUES
+(1, 'ZOSSOUNGBO', 'Mario', 'M.', 2, 'valide');
 
 -- --------------------------------------------------------
 
@@ -228,7 +262,15 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_utilisateur`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id_utilisateur`, `email`, `password`, `created_at`) VALUES
+(1, 'zossoungbomario@gmail.com', '$2y$10$ulGHEOQUSW1Rt3pqrqxz3eeeREKVbJfuDFwTSSUcTAbkbC6hwf9ga', '2026-05-28 17:10:45'),
+(2, 'zossoungbomario95@gmail.com', '$2y$10$dTlQ0m1yBK11ErFGuS7/VegueeYRq55j3qxn1ICCfEtG7UMu5hqBq', '2026-05-28 22:46:02');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

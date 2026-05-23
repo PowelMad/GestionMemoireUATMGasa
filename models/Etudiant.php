@@ -37,4 +37,43 @@ class Etudiant extends Model
         $stmt->execute([$idUtilisateur]);
         return $stmt->fetch();
     }
+        /**
+     * Repasse en Observateur les diplomés dont le mois est écoulé
+     */
+    public static function repasserObservateurs(): void
+    {
+        $stmt = getDB()->prepare(
+            "UPDATE etudiant
+            SET type_etudiant = 'Observateur',
+                niveau        = NULL,
+                date_diplomation = NULL
+            WHERE type_etudiant = 'Diplomé'
+            AND date_diplomation IS NOT NULL
+            AND date_diplomation <= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)"
+        );
+        $stmt->execute();
+    }
+    public static function renommerMatricule(string $ancienMatricule, string $nouveauMatricule, array $data = []): bool
+    {
+        $db   = getDB();
+        $sets = ['matricule = ?'];
+        $params = [$nouveauMatricule];
+
+        foreach ($data as $col => $val) {
+            if ($val !== null && $val !== '') {
+                $sets[]   = "`$col` = ?";
+                $params[] = $val;
+            }
+        }
+
+        if (($data['type_etudiant'] ?? '') === 'Diplomé') {
+            $sets[]   = "date_diplomation = ?";
+            $params[] = date('Y-m-d');
+        }
+
+        $params[] = $ancienMatricule;
+        $sql = "UPDATE etudiant SET " . implode(', ', $sets) . " WHERE matricule = ?";
+
+        return $db->prepare($sql)->execute($params);
+    }
 }
