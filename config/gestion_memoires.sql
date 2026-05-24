@@ -3,22 +3,23 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 24 mai 2026 à 18:12
+-- Généré le : dim. 24 mai 2026 à 18:45
 -- Version du serveur : 8.4.7
 -- Version de PHP : 8.3.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+CREATE DATABASE IF NOT EXISTS gestion_memoires
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE gestion_memoires;
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
-CREATE DATABASE IF NOT EXISTS gestion_memoires
-CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE gestion_memoires;
+
 --
 -- Base de données : `gestion_memoires`
 --
@@ -144,11 +145,13 @@ CREATE TABLE IF NOT EXISTS `memoire` (
   `date_mise_en_ligne` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `id_filiere` int NOT NULL,
   `id_centre` int NOT NULL,
-  `id_professeur` int DEFAULT NULL,
+  `id_maitre_memoire` int DEFAULT NULL,
+  `id_president_jury` int DEFAULT NULL,
   PRIMARY KEY (`id_memoire`),
   KEY `id_filiere` (`id_filiere`),
   KEY `id_centre` (`id_centre`),
-  KEY `id_professeur` (`id_professeur`)
+  KEY `id_maitre_memoire` (`id_maitre_memoire`),
+  KEY `id_president_jury` (`id_president_jury`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
