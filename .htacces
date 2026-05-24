@@ -1,0 +1,24 @@
+Options -Indexes
+RewriteEngine On
+
+# Rediriger tout vers index.php sauf les fichiers et dossiers existants
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [QSA,L]
+
+# Sécurité — bloquer l'accès aux fichiers sensibles
+<FilesMatch "\.(sql|log|env)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Bloquer l'accès direct au dossier config
+<IfModule mod_rewrite.c>
+    RewriteRule ^config/ - [F,L]
+</IfModule>
+
+# PHP settings pour InfinityFree
+php_flag display_errors off
+php_value upload_max_filesize 20M
+php_value post_max_size 22M
+php_value max_execution_time 60
