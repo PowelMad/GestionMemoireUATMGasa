@@ -4,3 +4,5 @@
 - Mise en place architecture MVC
 - Configuration connexion base de données
 - Création routeur principal index.php
+- Création modèle de base Model.php
+- Ajout helpers.php avec fonctions utilitaires
