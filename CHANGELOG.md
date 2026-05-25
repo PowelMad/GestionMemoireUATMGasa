@@ -11,3 +11,6 @@
 - Système authentification connexion/inscription
 - Modèles Utilisateur, Etudiant, Professeur
 - Vues connexion et inscription
+- Gestion profil utilisateur
+- Modification infos et mot de passe
+- Fix redirection post-connexion selon rôle
