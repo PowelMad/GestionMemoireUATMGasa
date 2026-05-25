@@ -6,3 +6,8 @@
 - Création routeur principal index.php
 - Création modèle de base Model.php
 - Ajout helpers.php avec fonctions utilitaires
+
+## [25/05/2026]
+- Système authentification connexion/inscription
+- Modèles Utilisateur, Etudiant, Professeur
+- Vues connexion et inscription
