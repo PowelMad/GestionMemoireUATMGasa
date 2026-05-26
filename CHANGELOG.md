@@ -19,3 +19,6 @@
 - Liaison matricule persistée en BDD
 - Table demande_matricule avec statuts
 - Modèle DemandeMatricule.php
+- Niveau Licence/Master pour étudiants
+- Retour automatique Observateur après 1 mois
+- Fix affichage demande depuis BDD
