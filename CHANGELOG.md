@@ -14,3 +14,8 @@
 - Gestion profil utilisateur
 - Modification infos et mot de passe
 - Fix redirection post-connexion selon rôle
+
+## [26/05/2026]
+- Liaison matricule persistée en BDD
+- Table demande_matricule avec statuts
+- Modèle DemandeMatricule.php
