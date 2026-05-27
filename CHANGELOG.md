@@ -27,3 +27,6 @@
 - Formulaire soumission mémoire complet
 - Upload PDF validation type et taille
 - Sélection maître mémoire et président jury
+- Renvoi mémoire corrigé après rejet
+- Filtre niveau dans recherche
+- Fix chemins upload dossier memoires
