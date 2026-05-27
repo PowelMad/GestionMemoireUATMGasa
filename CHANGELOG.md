@@ -22,3 +22,8 @@
 - Niveau Licence/Master pour étudiants
 - Retour automatique Observateur après 1 mois
 - Fix affichage demande depuis BDD
+
+## [27/05/2026]
+- Formulaire soumission mémoire complet
+- Upload PDF validation type et taille
+- Sélection maître mémoire et président jury
