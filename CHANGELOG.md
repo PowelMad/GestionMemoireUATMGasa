@@ -35,3 +35,5 @@
 - Intégration PDF.js viewer sécurisé
 - Pas de bouton téléchargement/impression
 - Protection clic droit et raccourcis clavier
+- Stream PDF serveur avec contrôle accès par rôle
+- Fix session et chemins relatifs viewer
