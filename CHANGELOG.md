@@ -30,3 +30,8 @@
 - Renvoi mémoire corrigé après rejet
 - Filtre niveau dans recherche
 - Fix chemins upload dossier memoires
+
+## [28/05/2026]
+- Intégration PDF.js viewer sécurisé
+- Pas de bouton téléchargement/impression
+- Protection clic droit et raccourcis clavier
