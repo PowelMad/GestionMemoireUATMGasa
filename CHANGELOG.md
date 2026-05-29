@@ -42,3 +42,5 @@
 - Commentaires avec nom auteur affiché
 - Réponses imbriquées aux commentaires
 - Validation mémoire par président du jury
+- Commentaires publics lecture seule
+- Fix toggleReponse et conflit pdfViewer
