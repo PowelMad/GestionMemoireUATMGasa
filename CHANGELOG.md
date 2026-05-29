@@ -37,3 +37,8 @@
 - Protection clic droit et raccourcis clavier
 - Stream PDF serveur avec contrôle accès par rôle
 - Fix session et chemins relatifs viewer
+
+## [29/05/2026]
+- Commentaires avec nom auteur affiché
+- Réponses imbriquées aux commentaires
+- Validation mémoire par président du jury
