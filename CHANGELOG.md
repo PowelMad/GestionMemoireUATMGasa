@@ -44,3 +44,8 @@
 - Validation mémoire par président du jury
 - Commentaires publics lecture seule
 - Fix toggleReponse et conflit pdfViewer
+
+## [30/05/2026]
+- PHPMailer intégré sans Composer
+- Service Mailer.php config dynamique BDD
+- Notifications soumission et validation/rejet
