@@ -49,3 +49,6 @@
 - PHPMailer intégré sans Composer
 - Service Mailer.php config dynamique BDD
 - Notifications soumission et validation/rejet
+- Dashboard admin statistiques globales
+- Gestion utilisateurs et matricules
+- Méthode renommerMatricule
