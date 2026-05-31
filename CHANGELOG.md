@@ -52,3 +52,8 @@
 - Dashboard admin statistiques globales
 - Gestion utilisateurs et matricules
 - Méthode renommerMatricule
+
+## [31/05/2026]
+- Gestion filières et centres admin
+- Configuration Gmail SMTP panel admin
+- Fix CSS chevauchement navbar sidebar
