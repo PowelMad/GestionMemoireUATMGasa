@@ -57,3 +57,5 @@
 - Gestion filières et centres admin
 - Configuration Gmail SMTP panel admin
 - Fix CSS chevauchement navbar sidebar
+- Gestion mémoires admin validation/rejet/suppression
+- Upload mémoires anciens depuis admin
