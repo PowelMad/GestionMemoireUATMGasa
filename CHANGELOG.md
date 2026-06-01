@@ -59,3 +59,8 @@
 - Fix CSS chevauchement navbar sidebar
 - Gestion mémoires admin validation/rejet/suppression
 - Upload mémoires anciens depuis admin
+
+## [01/06/2026]
+- Tests et corrections finales
+- Nettoyage code et optimisations
+- Version stable toutes fonctionnalités
